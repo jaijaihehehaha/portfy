@@ -1,4 +1,21 @@
 {% extends 'layouts/base.html' %}
+{% block head %}
+<style>
+    :root {
+        --accent: {{ settings.accent_color if settings else '#1f2937' }};
+    }
+    body {
+        background: {% if settings and settings.theme == "dark" %} #111 {% else %} white {% endif %};
+        color: {% if settings and settings.theme == "dark" %} white {% else %} black {% endif %};
+    }
+    button {
+        background: var(--accent);
+        color: white;
+        border-radius: 6px;
+        padding: 6px 10px;
+    }
+</style>
+{% endblock %}
 {% block content %}
 <h1>Dashboard</h1>
 <section>
@@ -36,4 +53,23 @@
         <button type="submit">Export static HTML</button>
     </form>
 </section>
+
+<section>
+    <h2>Theme Settings</h2>
+
+    <form method="post" action="{{ url_for('dash.update_settings') }}">
+        <label>Theme</label>
+        <select name="theme">
+            <option value="clean">Clean</option>
+            <option value="dark">Dark</option>
+            <option value="minimal">Minimal</option>
+        </select>
+
+        <label>Accent Color</label>
+        <input type="color" name="accent_color" value="#1f2937">
+
+        <button type="submit">Save Theme</button>
+    </form>
+</section>
+
 {% endblock %}

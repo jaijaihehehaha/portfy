@@ -3,6 +3,51 @@ body { font-family: Inter, Arial, sans-serif; margin:0; padding:0; color:#111827
 .container { max-width:900px; margin:2rem auto; padding:0 1rem; }
 input, textarea, select { display:block; margin:0.5rem 0 1rem 0; padding:0.5rem; width:100%; max-width:500px; }
 button { padding:0.5rem 1rem; border:none; cursor:pointer; background:#111827; color:white; border-radius:6px; }
-.flashes { margin-bottom:1rem; }
-.flash.success { background:#dcfce7; padding:0.5rem; border-radius:6px; }
-.flash.danger { background:#fee2e2; padding:0.5rem; border-radius:6px; }
+.flash {
+    padding: 10px 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* Different colors for different categories */
+.flash.success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.flash.info {
+    background-color: #cce5ff;
+    color: #004085;
+}
+
+.flash.danger {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+body.theme-clean {
+    --accent: #1f2937;
+    background: white;
+    color: black;
+}
+
+/* Dark mode */
+body.theme-dark {
+    --accent: #00ffcc;
+    background: #111;
+    color: white;
+}
+
+/* Retro mode */
+body.theme-retro {
+    --accent: #ff9900;
+    background: #f6e6a8;
+    color: #4b2e05;
+}
+
+/* Use accent for buttons */
+button {
+    background: var(--accent);
+    color: white;
+}

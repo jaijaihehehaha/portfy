@@ -45,4 +45,4 @@ def create_app(config_object=None):
         db.create_all()
 
 
-        return app
+    return app

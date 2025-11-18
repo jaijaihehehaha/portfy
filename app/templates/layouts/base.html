@@ -6,7 +6,7 @@
         <title>Portfy</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     </head>
-    <body>
+    <body class="theme-{{ current_user.settings.theme if current_user.is_authenticated and current_user.settings else 'clean' }}">
         <header class="site-header">
             <a href="/" class="brand">Portfy</a>
             <nav>

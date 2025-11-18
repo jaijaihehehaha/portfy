@@ -3,7 +3,9 @@
 <h2>Settings</h2>
 <form method="post" action="{{ url_for('dash.settings') }}">
     <label>Theme<select name="theme">
-    <option value="clean" {% if settings and settings.theme=='clean' %}selected{% endif %}>Clean</option>
+        <option value="clean"  {% if settings.theme=='clean' %}selected{% endif %}>Clean</option>
+        <option value="dark"   {% if settings.theme=='dark' %}selected{% endif %}>Dark</option>
+        <option value="retro"  {% if settings.theme=='retro' %}selected{% endif %}>Retro</option>
     </select></label>
     <label>Accent color (hex)<input name="accent_color" value="{{ settings.accent_color if settings else '#1f2937' }}"></label>
     <button type="submit">Save</button>
