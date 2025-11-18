@@ -1,0 +1,25 @@
+{% extends 'layouts/base.html' %}
+{% block content %}
+<section class="profile">
+<h1>{{ user.display_name or user.username }}</h1>
+<p><em>{{ user.email }}</em></p>
+</section>
+
+
+<section class="projects">
+<h2>Projects</h2>
+<ul>
+{% for p in projects %}
+<li>
+<h3>{{ p.title }}</h3>
+<p>{{ p.description }}</p>
+{% if p.github_url %}
+<p><a href="{{ p.github_url }}" target="_blank">View on GitHub</a></p>
+{% endif %}
+</li>
+{% else %}
+<li>No projects published yet.</li>
+{% endfor %}
+</ul>
+</section>
+{% endblock %}

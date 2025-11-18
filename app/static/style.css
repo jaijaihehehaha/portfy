@@ -1,0 +1,8 @@
+body { font-family: Inter, Arial, sans-serif; margin:0; padding:0; color:#111827; }
+.site-header { display:flex; justify-content:space-between; align-items:center; padding:1rem; border-bottom:1px solid #e5e7eb; }
+.container { max-width:900px; margin:2rem auto; padding:0 1rem; }
+input, textarea, select { display:block; margin:0.5rem 0 1rem 0; padding:0.5rem; width:100%; max-width:500px; }
+button { padding:0.5rem 1rem; border:none; cursor:pointer; background:#111827; color:white; border-radius:6px; }
+.flashes { margin-bottom:1rem; }
+.flash.success { background:#dcfce7; padding:0.5rem; border-radius:6px; }
+.flash.danger { background:#fee2e2; padding:0.5rem; border-radius:6px; }

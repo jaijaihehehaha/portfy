@@ -1,0 +1,39 @@
+{% extends 'layouts/base.html' %}
+{% block content %}
+<h1>Dashboard</h1>
+<section>
+    <h2>Add project</h2>
+    <form method="post" action="{{ url_for('dash.new_project') }}">
+        <input name="title" placeholder="Project title" required>
+        <textarea name="description" placeholder="Short description"></textarea>
+        <input name="github_url" placeholder="GitHub URL (optional)"></input>
+        <input name="tags" placeholder="comma separated tags">
+        <button type="submit">Add</button>
+    </form>
+</section>
+
+
+<section>
+    <h2>Your projects</h2>
+    <ul>
+    {% for p in projects %}
+    <li>
+        <strong>{{ p.title }}</strong> - {{ p.description }}
+        <form method="post" action="{{ url_for('dash.delete_project', project_id=p.id) }}" style="display:inline">
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+    {% else %}
+    <li>No projects yet.</li>
+    {% endfor %}
+    </ul>
+</section>
+
+
+<section>
+    <h2>Export</h2>
+    <form method="post" action="{{ url_for('dash.export_portfolio') }}">
+        <button type="submit">Export static HTML</button>
+    </form>
+</section>
+{% endblock %}
