@@ -1,17 +1,22 @@
 from flask import Flask, render_template
 import os
 
+# Absolute path to the folder containing run.py
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-app = Flask(__name__, template_folder="templates", static_folder="static")
+# Flask app
+app = Flask(
+    __name__,
+    template_folder=os.path.join(BASE_DIR, "app", "templates"),
+    static_folder=os.path.join(BASE_DIR, "app", "static")
+)
 
-@app.route("/")
+@app.route('/')
 def home():
-    return render_template("index.html")  # <-- your real homepage
+    # Look inside templates/public
+    return render_template("public/index.html")
 
-@app.route("/login")
-def login():
-    return render_template("login.html")
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
+    # Ensure working directory is root
+    os.chdir(BASE_DIR)
+    app.run(host="0.0.0.0", port=2324, debug=True)
